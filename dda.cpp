@@ -5,7 +5,7 @@
 #include <dos.h>
 
   int main() {
-        /* request auto detection */
+       
         int gdriver = DETECT, gmode, err;
         float i, x1, y1, x2, y2, dx, dy, steps;
         float x, y, xincr, yincr;
@@ -15,20 +15,19 @@
 	 	printf ("Punto final:");
 		scanf("%f%f",&x2,&y2);
 
-        /* initialize graphic mode */
-        initgraph(&gdriver, &gmode, "C:/TURBOC3/BGI");
+       
+        initgraph(&gdriver, &gmode, "");
 
         err = graphresult();
 
         if (err != grOk) {
-                /* error occurred */
                 printf("Graphic Error: %s\n",
                                 grapherrormsg(err));
                 getch();
                 return 0;
         }
 
-        /* draw line from (0, 0) to x-axis & y-axis maximum */
+        
         
         dx = x2 - x1;
         dy = y2 - y1;
@@ -42,18 +41,17 @@
 
         putpixel((int) x, (int) y, WHITE);
 
-        /* find the x and y successors and plot the pixels */
+        
         for (i = 0; i < steps; i++) {
                 x = x + xincr;
                 y = y + yincr;
 
-                /* put a pixel at the given postion(x, y) */
+                
                 putpixel((int) x, (int) y, WHITE);
 
         }
 
-        /* deallocate memory allocated fro graphic screen */
-        getchar();
+                getchar();
 		getchar();
         closegraph();
         return 0;
