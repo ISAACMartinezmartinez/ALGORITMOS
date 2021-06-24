@@ -5,7 +5,7 @@
   #include <dos.h>
 
   int main() {
-        /* request auto detection */
+        
         int gdriver = DETECT, gmode;
        	float x1 , y1 , x2, y2;
         int err, x, y, dx, dy, dp, xEnd;
@@ -16,18 +16,17 @@
 	 	printf ("Punto final:");
 		scanf("%f%f",&x2,&y2);
 
-        /* initialize graphic driver */
-        initgraph(&gdriver, &gmode, "C:/TURBOC3/BGI");
+        
+        initgraph(&gdriver, &gmode, "");
         err = graphresult();
 
         if (err != grOk) {
-                /* error occurred */
                 printf("Graphics Error: %s\n",
                                 grapherrormsg(err));
                 return 0;
         }
 
-        /* draws line from (0, 0) to (x2, y2) */
+        
         dx = x2 - x1;
         dy = y2 - y1;
 
@@ -46,10 +45,8 @@
                 xEnd = x2;
         }
 
-        /* put a dot at the position (x, y) */
         putpixel(x, y, WHITE);
 
-        /* calculate x and y successor and plot the points */
         while (x < xEnd) {
                 x = x + 1;
                 if (dp < 0) {
@@ -59,11 +56,9 @@
                         dp = dp + twodxdy;
                 }
 
-                /* put a dot at the given position(x, y) */
+  
                 putpixel(x, y, WHITE);
 
-                /* sleep for 50 milliseconds */
-                //delay(50);
         }
 
         getch();
